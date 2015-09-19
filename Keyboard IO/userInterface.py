@@ -4,7 +4,7 @@ import webbrowser
 
 options = dict()
         
-print("Thank you for using InstaJim")
+print("Thank you for using InstaSite")
 print("Your options are: \n")
 
 #read CSV file into options dict
@@ -24,7 +24,7 @@ for x in options:
     if x in item:
         print "You're getting a ", options[x]
         sandwichType = options[x]
-        webbrowser.open(options[x])
+        webbrowser.open(options[x], new=1)
         break
 
 
