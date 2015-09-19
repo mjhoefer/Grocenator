@@ -1,5 +1,6 @@
 #read key from file
 import csv
+import webbrowser
 
 accessKeys = dict()
 
@@ -21,8 +22,12 @@ amazon = bottlenose.Amazon(accessKeys['AWS_ACCESS_KEY_ID'],
                            accessKeys['AWS_ASSOCIATE_TAG'])
 response = amazon.ItemLookup(ItemId="0596520999", ResponseGroup="Images",
                              SearchIndex="Books", IdType="ISBN")
-print(response)
 
+#this isn't working
+#response = amazon.CartCreate(Items=response, Quantity=1)
+
+print("NEW NEW NEW \n\n\n")
+#print(response)
 ###start amazon api test
 ##api = API(locale='us')
 ##items = api.item_search('Books', Publisher="O'Reilly")
@@ -34,3 +39,5 @@ print(response)
 ##                        book.ItemAttributes.Title)
 ##
 ##
+
+#start other test

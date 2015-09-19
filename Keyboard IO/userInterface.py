@@ -1,5 +1,6 @@
 import csv
 import json
+import webbrowser
 
 options = dict()
         
@@ -23,6 +24,7 @@ for x in options:
     if x in item:
         print "You're getting a ", options[x]
         sandwichType = options[x]
+        webbrowser.open(options[x])
         break
 
 
