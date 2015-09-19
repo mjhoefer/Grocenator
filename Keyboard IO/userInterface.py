@@ -1,23 +1,24 @@
 import csv
 import json
 
-tomato = "YES"
 options = dict()
-i=0
-
+        
+print("Thank you for using InstaJim")
 print("Your options are: \n")
+
+#read CSV file into options dict
 with open('itemList.csv', 'rb') as csvfile:
     itemListReader = csv.DictReader(csvfile, delimiter=',', quotechar='|')
     for row in itemListReader:
         print ', '.join(row['keyPressed']), ' to order ', ''.join(row['option'])
         options[row['keyPressed']] = row['option']
-        i = i +1 
-        
-print("Thank you for using InstaJim")
+csvfile.close()
+
+#grab data
 item = raw_input("order something:")
 
 
-#check for sandwich type and tomato
+#check for first entered sandwich type 
 for x in options:
     if x in item:
         print "You're getting a ", options[x]
@@ -53,10 +54,10 @@ jimmyOrder = {
 
 
 #write json to file just for makemeasandwich api
+#makemeasandwich doesn't seem to work, so new idea is needed
 f = open('order.json', 'w')
 f.write(json.dumps(jimmyOrder))
 f.close()
-
 
 
 
