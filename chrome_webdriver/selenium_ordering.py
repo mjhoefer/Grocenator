@@ -8,10 +8,13 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import csv
 
+
+options = dict()
+
 # product_url = 'http://www.amazon.com/Post--Notes-Jaipur-Collection-654-5UC/dp/B00006JNN7/ref=sr_1_1?tag=grocerator-20'
 
 
-rint("Thank you for using InstaSite")
+print("Thank you for using InstaSite")
 print("Your options are: \n")
 
 #read CSV file into options dict
@@ -23,12 +26,10 @@ with open('itemList.csv', 'rb') as csvfile:
 csvfile.close()
 
 #grab data
-while 1:
-    item = raw_input("order something:")
+
+item = raw_input("order something:")
 
 
-
-    #check for first entered sandwich type 
 
 
 
@@ -51,16 +52,22 @@ password.send_keys('admin967%')
 	# Logs into Amazon.  For some reason, it does not redirect to the homepage, however a new session is started
 
 
+
+print('--------------')
+#print(driver.find_element_by_xpath('signInSubmit'))
+
 if driver.find_element_by_id('signInSubmit-input') <> 'NoSuchElementException':
 	login = driver.find_element_by_xpath('//*[@id="signInSubmit-input"]')
 	login.send_keys(Keys.ENTER)
-	print('First login screen')
+	print('First login screen\nLogin Successful!')
+    #print('Login Successful!')
+elif driver.find_element_by_id('signInSubmit') <> 'NoSuchElementException':
+    login = driver.find_element_by_xpath('//*[@id="signInSubmit"]')
+    login.send_keys(Keys.ENTER)
+    print('Second login screen')
+    print('Login Successful!')
 else:
-	login = driver.find_element_by_xpath('//*[@id="signInSubmit"]')
-	login.send_keys(Keys.ENTER)
-	print('Second login screen')
-
-print('Login (assumed) successful!')
+	print('Login Error')
 
 #def fun_add_to_cart():
 	# Login is assumed to be successful.  Go to the page of the product we're interested in buying.
