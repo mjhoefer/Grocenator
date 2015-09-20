@@ -6,8 +6,31 @@
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+import csv
 
 # product_url = 'http://www.amazon.com/Post--Notes-Jaipur-Collection-654-5UC/dp/B00006JNN7/ref=sr_1_1?tag=grocerator-20'
+
+
+rint("Thank you for using InstaSite")
+print("Your options are: \n")
+
+#read CSV file into options dict
+with open('itemList.csv', 'rb') as csvfile:
+    itemListReader = csv.DictReader(csvfile, delimiter=',', quotechar='|')
+    for row in itemListReader:
+        print ', '.join(row['keyPressed']), ' to order ', ''.join(row['name'])
+        options[row['keyPressed']] = row['link']
+csvfile.close()
+
+#grab data
+while 1:
+    item = raw_input("order something:")
+
+
+
+    #check for first entered sandwich type 
+
+
 
 #def fun_start_driver():
 driver = webdriver.Chrome()
@@ -41,16 +64,17 @@ print('Login (assumed) successful!')
 
 #def fun_add_to_cart():
 	# Login is assumed to be successful.  Go to the page of the product we're interested in buying.
-driver.get('http://www.amazon.com/Post--Notes-Jaipur-Collection-654-5UC/dp/B00006JNN7/ref=sr_1_1?tag=grocerator-20')
 
-
-add_item_to_cart = driver.find_element_by_xpath('//*[@id="add-to-cart-button"]')
-
-if add_item_to_cart <> 'NoSuchElementException':
-	add_item_to_cart.send_keys(Keys.ENTER)
-	print('Item added to cart')
-else:
-	print('ERROR - Could not be added to cart!')
+for x in options:
+        if x in item:
+                print "Opening ", options[x]
+                driver.get(options[x])
+                add_item_to_cart = driver.find_element_by_xpath('//*[@id="add-to-cart-button"]')
+                if add_item_to_cart <> 'NoSuchElementException':
+                        add_item_to_cart.send_keys(Keys.ENTER)
+                        print('Item added to cart')
+                else:
+                        print('ERROR - Could not be added to cart!')
 
 # Checkout
 #def fun_checkout():
