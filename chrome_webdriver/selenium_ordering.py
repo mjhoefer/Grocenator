@@ -47,15 +47,15 @@ password = driver.find_element_by_xpath('//*[@id="ap_password"]')
 
 	# Input
 email.send_keys('da.peiffer@gmail.com')
-password.send_keys('admin967%')
+password.send_keys('')
 
-	# Logs into Amazon.  For some reason, it does not redirect to the homepage, however a new session is started
+# Logs into Amazon.  For some reason, it does not redirect to the homepage, however a new session is started
 
-test = driver.find_element_by_id('signInSubmit-input')
-    
-if test = 'NoSuchElementException':
-    print('Login error')
-
+password.send_keys(Keys.ENTER)
+# if driver.find_element_by_id('signInSubmit-input') == 'NoSuchElementException':
+#     print('Login error')
+#     login = driver.find_element_by_xpath('//*[@id="signInSubmit-input"]')
+#     password.send_keys(Keys.ENTER)
 
 
 
